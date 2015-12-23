@@ -47,5 +47,35 @@ app.get('/clients/:id', function (req, res){
 	});
 });
 
+app.put('/clients/:id', function (req, res){
+	var id = req.params.id;
+
+	db.clients.findAndModify({query: {_id: mongojs.ObjectId(id)},
+		update: {
+			$set: {
+				first_name: req.body.first_name,
+				last_name: req.body.last_name,
+				email: req.body.email,
+				phone: req.body.phone
+			}},
+			new: true
+		}, function(err, doc){
+			res.json(doc);
+		});
+});
+
+app.delete('/clients/:id', function (req, res){
+	var id = req.params.id;
+
+	db.clients.remove({_id: mongojs.ObjectId(id)}, function (err, doc){
+		if(err) {
+			res.send(err);
+		} else {
+			console.log('Client removed.');
+			res.json(doc);
+		}
+	})
+});
+
 app.listen(port);
 console.log('Ready on port: '+ port);

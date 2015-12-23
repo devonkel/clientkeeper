@@ -22,4 +22,18 @@ myApp.controller('AppController', ['$scope', '$http', '$location', function ($sc
 			$scope.client = response;
 		});
 	};
+
+	$scope.updateClient = function(id){
+		$http.put('/clients/'+$scope.client._id, $scope.client).success(function(response){
+			console.log('Client updated');
+			window.location.href = '/';
+		});
+	};
+
+	$scope.deleteClient = function (id){
+		$http.delete('/clients/'+id).success(function (response){
+			console.log('Client Deleted');
+			window.location.href = '/';
+		});
+	};
 }]);
