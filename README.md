@@ -1,7 +1,12 @@
 # clientkeeper
 
-##Javascript MEAN Tutorial
-###M - MongoJS
-###E - Express
-###A - AngularJS
-###N - NodeJS
+Javascript MEAN Tutorial
+------------------------
+
+M - MongoJS
+
+E - Express
+
+A - AngularJS
+
+N - NodeJS
